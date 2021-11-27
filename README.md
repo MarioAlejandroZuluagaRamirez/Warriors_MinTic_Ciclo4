@@ -70,7 +70,7 @@ Repositorio para proyecto MinTic. Desarrollo Web
 6. Ingresar el campo del atributo id
 7. Ingresar el tipo de datos del atributo id
 8. Seleccionar si se omite la Id al crear nueva instancia (automatico)
-9. Nombre de acceso a traves de la URL	
+9. Nombre de acceso a traves de la URL
 
 
 ## Instalacion Angular
@@ -193,43 +193,30 @@ Se debe instalar anaconda para utilizar Sypder
         if __name__ == '__main__':
             app.run()
 
-## Creación de Usuario, Generación de Constraseña y Notificacion al usuario
+# Angular
+1. Ejecutar  `ng s o`
+2. Compilar `ng s`
+## Instalación de angular
+1. Instalación globla `npm install -g @angular/cli`
 
-### Modificar el servicio de Autenticacion
-1. Importar paquetes
-    
-        const generador = require("password-generator");
-        const cryptoJS = require("crypto-js");
-	
-2. Agregar metodos del servicio
+## Creación de aplicacion
+1. Ejecutar el comando `ng new`
+2. Ingresar el nombre del Proyecto
+3. Seleccionar la opción de incluir routing
 
-        GenerarClave(){
-            let clave = generador(8,false) 'Cantidad de caracteres, facil de memorizar'
-            return clave;
-        }
+## Creación de modulos
+1. Ingresar a la carpeta de la aplicación creada
+2. Crear modulos `ng g m ruta+nombreModulo --routing`
+3. Crear modulos de Seguridad, Administracion (en carpeta modulos)
 
-        CifrarClave(clave:string){
-            let claveCifrada = cryptoJS.MD5(clave).toString();
-            return claveCifrada;
-        }
+## Creación de componentes Comunes
+1. Crear una carpeta en App
+2. Generar componentes `ng g c ruta+nombreComponente` Encabezado, Contenido, Pie pagina, Error
+## Creación de componentes
+1. Crear componentes `ng g c ruta+nombreComponente`
+2. Crear componentes de identificacion, cambioClave, recuperarClave (en carpeta modulos/seguridad)
+3. Crear componentes de CRUD (Para nuestro caso User (crear, editar, eliminar y buscar)) (en carpeta modulos(administracion))
 
-### Modificar Controlador de Persona
-1. Importar paquetes: `import fetch from 'cross-fetch';`
-2. En el constructor agregar servicio de autenticacion: `@service(AutenticacionService) public servicioAutenticacion : AutenticacionService`
-3. Importar service de autenticacion: `import { AutenticacionService } from '../services';`
-4. Modificar la respuesta de la creación de persona
-
-        let clave = this.servicioAutenticacion.GenerarClave();
-        let claveCifrada = this.servicioAutenticacion.CifrarClave(clave);
-        persona.clave = claveCifrada;
-        let p = await this.personaRepository.create(persona);
-
-        let destino = persona.correo;
-        let asunto = "Registro en la plataforma";
-        let contenido = `Hola ${persona.nombres}, su nombre de usuario es: ${persona.correo} y su contraseña es ${clave}.`;
-        // Notificación al usuario, consumo del servicio de sypder (python)
-        fetch(`http://127.0.0.1:5000/envio-correo?correo_destino=${destino}&asunto=${asunto}&mensaje=${contenido}`)
-        .then((data:any) => {
-        console.log(data)
-        })
-        return p
+## Creación de servicios
+1. Crear servicios `ng g s ruta+nombreServicio`
+2. Crear servicios de seguridad

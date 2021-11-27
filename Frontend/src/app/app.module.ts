@@ -7,7 +7,10 @@ import { FooterComponent } from './template/footer/footer.component';
 import { NavbarComponent } from './template/navbar/navbar.component';
 import { ContentComponent } from './template/content/content.component';
 import { ErrorComponent } from './template/error/error.component';
+// Importanción manual del modulo
+import {HttpClientModule} from '@angular/common/http'
 
+// Adicionar componentes y modulos (HttpClienteModule)
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +21,8 @@ import { ErrorComponent } from './template/error/error.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

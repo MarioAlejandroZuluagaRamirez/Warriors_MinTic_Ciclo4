@@ -3,7 +3,6 @@ import {UserCredentials} from './user-credentials.model';
 import {Inmueble} from './inmueble.model';
 import {Solicitud} from './solicitud.model';
 
-
 export type Credentials = {
   email: string;
   password: string;
@@ -29,8 +28,8 @@ export class User extends Entity {
   @property({
     type: 'string',
     id: true,
-    generated: false,
-    defaultFn: '',
+    generated: true,
+    // defaultFn: '',
   })
   id: string;
 

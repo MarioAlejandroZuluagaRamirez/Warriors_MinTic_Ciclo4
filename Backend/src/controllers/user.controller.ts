@@ -159,17 +159,15 @@ export class UserController {
 
     await this.userRepository.userCredentials(savedUser.id).create({password});
 
-    if (newUserRequest.role==='User'){
-      let destino = newUserRequest.email;
-      let asunto = "Registro Hogar Colombia MinTic";
-      let contenido = `Hola, su registro a Hogar Colombia ha sido exitoso. Su nombre de usuario es: ${destino} y su contraseña es ${newUserRequest.password}.`;
-    
-      // Notificación al usuario, consumo del servicio de sypder (python)
-      fetch(`http://127.0.0.1:5000/envio-correo?correo_destino=${destino}&asunto=${asunto}&mensaje=${contenido}`)
-      .then((data:any) => {
-      console.log(data)
-      })
-    }
+    let destino = savedUser.email.toString();
+    let asunto = "Registro Hogar Colombia MinTic";
+    let contenido = `Hola, su registro a Hogar Colombia ha sido exitoso. Su nombre de usuario es: ${destino} y su contraseña es ${newUserRequest.password}.`;
+
+    // Notificación al usuario, consumo del servicio de sypder (python)
+    fetch(`http://127.0.0.1:5000/envio-correo?correo_destino=${destino}&asunto=${asunto}&mensaje=${contenido}`)
+    .then((data:any) => {
+    console.log(data)
+    })
   
     return savedUser;
   }
