@@ -18,6 +18,7 @@ export class SigninComponent implements OnInit {
   // adicion de FormBuilder al constructor: private fb: FormBuilder, private servicioSeguridad: SecurityService
   constructor(private fb: FormBuilder,
     private servicioSeguridad: SecurityService ) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -34,5 +35,4 @@ export class SigninComponent implements OnInit {
       alert("KO");
     }) 
   }
-
 }

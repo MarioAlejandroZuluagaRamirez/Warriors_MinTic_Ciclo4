@@ -18,6 +18,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SecurityRoutingModule,
     FormsModule,
     ReactiveFormsModule
+    PasswordRecoveryComponent
+  ],
+  imports: [
+    CommonModule,
+    SecurityRoutingModule
   ]
 })
 export class SecurityModule { }
