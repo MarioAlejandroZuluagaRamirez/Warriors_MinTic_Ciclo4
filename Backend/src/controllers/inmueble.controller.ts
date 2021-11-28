@@ -1,3 +1,5 @@
+import { authenticate } from '@loopback/authentication';
+import { authorize } from '@loopback/authorization';
 import {
   Count,
   CountSchema,
@@ -17,6 +19,7 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
+import { basicAuthorization } from '../middlewares/auth.midd';
 import {Inmueble} from '../models';
 import {InmuebleRepository} from '../repositories';
 
@@ -27,6 +30,12 @@ export class InmuebleController {
   ) {}
 
   @post('/inmuebles')
+  //Permisos (administrador, asesor)  
+  @authenticate('jwt')
+  @authorize({
+    allowedRoles: ['Admin','Adviser'],
+    voters: [basicAuthorization],
+  })
   @response(200, {
     description: 'Inmueble model instance',
     content: {'application/json': {schema: getModelSchemaRef(Inmueble)}},
@@ -48,6 +57,12 @@ export class InmuebleController {
   }
 
   @get('/inmuebles/count')
+  //Permisos (administrador, asesor)
+  @authenticate('jwt')
+  @authorize({
+    allowedRoles: ['Admin','Adviser'],
+    voters: [basicAuthorization],
+  })
   @response(200, {
     description: 'Inmueble model count',
     content: {'application/json': {schema: CountSchema}},
@@ -59,6 +74,12 @@ export class InmuebleController {
   }
 
   @get('/inmuebles')
+  //Permisos (administrador,usuario,asesor)  
+  @authenticate('jwt')
+  @authorize({
+    allowedRoles: ['Admin','User','Adviser'],
+    voters: [basicAuthorization],
+  })
   @response(200, {
     description: 'Array of Inmueble model instances',
     content: {
@@ -77,6 +98,12 @@ export class InmuebleController {
   }
 
   @patch('/inmuebles')
+  //Permisos (administrador,asesor)  
+  @authenticate('jwt')
+  @authorize({
+    allowedRoles: ['Admin','Adviser'],
+    voters: [basicAuthorization],
+  })
   @response(200, {
     description: 'Inmueble PATCH success count',
     content: {'application/json': {schema: CountSchema}},
@@ -96,6 +123,12 @@ export class InmuebleController {
   }
 
   @get('/inmuebles/{id}')
+  //Permisos (administrador,usuario,asesor)  
+  @authenticate('jwt')
+  @authorize({
+    allowedRoles: ['Admin','Adviser'],
+    voters: [basicAuthorization],
+  })
   @response(200, {
     description: 'Inmueble model instance',
     content: {
@@ -112,6 +145,12 @@ export class InmuebleController {
   }
 
   @patch('/inmuebles/{id}')
+  //Permisos (administrador, asesor)  
+  @authenticate('jwt')
+  @authorize({
+    allowedRoles: ['Admin','Adviser'],
+    voters: [basicAuthorization],
+  })
   @response(204, {
     description: 'Inmueble PATCH success',
   })
@@ -130,6 +169,12 @@ export class InmuebleController {
   }
 
   @put('/inmuebles/{id}')
+  //Permisos (administrador, asesor)  
+  @authenticate('jwt')
+  @authorize({
+    allowedRoles: ['Admin','Adviser'],
+    voters: [basicAuthorization],
+  })
   @response(204, {
     description: 'Inmueble PUT success',
   })
@@ -141,6 +186,12 @@ export class InmuebleController {
   }
 
   @del('/inmuebles/{id}')
+  //Permisos (administrador, asesor)  
+  @authenticate('jwt')
+  @authorize({
+    allowedRoles: ['Admin','Adviser'],
+    voters: [basicAuthorization],
+  })
   @response(204, {
     description: 'Inmueble DELETE success',
   })

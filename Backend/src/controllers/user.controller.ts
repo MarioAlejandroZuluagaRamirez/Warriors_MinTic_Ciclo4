@@ -206,9 +206,10 @@ export class UserController {
       },
     },
   })
+  //Permite la autenticación:
   @authenticate('jwt')
   @authorize({
-    allowedRoles: ['Admin','User'],
+    allowedRoles: ['Admin','User','Adviser'],
     voters: [basicAuthorization],
   })
   async printCurrentUser(
