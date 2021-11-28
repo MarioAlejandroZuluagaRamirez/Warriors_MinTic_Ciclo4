@@ -208,7 +208,7 @@ export class UserController {
   })
   @authenticate('jwt')
   @authorize({
-    allowedRoles: ['Admin','User'],
+    allowedRoles: ['Admin','User','Adviser'],
     voters: [basicAuthorization],
   })
   async printCurrentUser(
