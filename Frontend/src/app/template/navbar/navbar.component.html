@@ -35,12 +35,13 @@
         <ul class="nav navbar-nav">
           <li><a routerLink="/content">Inicio</a></li>
           <li><a href="#">Acerca de</a></li>
-          <li><a routerLink="/security/password-change">Cambiar Clave</a></li>
-          <li><a routerLink="/security/password-recovery">Recuperar Clave</a></li>
+          <li><a *ngIf="SesionIniciada" routerLink="/security/password-change">Cambiar Clave</a></li>
+          <li><a *ngIf="SesionIniciada" routerLink="/security/password-recovery">Recuperar Clave</a></li>
+          <li><a *ngIf="SesionIniciada" routerLink="/security/sign-off">Cerrar Sesión</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <ul *ngIf="!SesionIniciada" class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" routerLink="/security/signin">
+            <a data-toggle="dropdown" class="dropdown-toggle" routerLink="/security/login">
               <i class="fa fa-user-o"></i> 
               Iniciar Sesión</a>
           </li>

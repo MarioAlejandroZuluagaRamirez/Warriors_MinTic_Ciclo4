@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ModeloIdentificar } from 'src/app/models/identificar.modelo';
+import { SecurityService } from 'src/app/services/security.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  SesionIniciada: boolean = false;
+  subs: Subscription = new Subscription();
+
+  constructor(private seguridadServicio: SecurityService) { }
 
   ngOnInit(): void {
+    this.subs = this.seguridadServicio.ObtenerDatosUsuarioEnSesion().subscribe((datos: ModeloIdentificar) => {
+      this.SesionIniciada = datos.identificado;
+    });
   }
 
 }

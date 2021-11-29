@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PasswordChangeComponent } from './password-change/password-change.component';
 import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
-import { SigninComponent } from './signin/signin.component';
+import { SignOffComponent } from './sign-off/sign-off.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {
@@ -14,9 +16,17 @@ const routes: Routes = [
     component: PasswordRecoveryComponent 
   },
   {
-    path: 'signin',
-    component: SigninComponent 
+    path: 'login',
+    component: LoginComponent 
   },
+  {
+    path: "sign-off",
+    component: SignOffComponent
+  },
+  {
+    path: "signup",
+    component: SignupComponent
+  }
 ];
 
 @NgModule({

@@ -5,11 +5,11 @@
   ::-moz-selection {
     background-color: #8ac7d8;
   }
-  
+   
   body {
     background: #3CC;
   }
-  
+
   .container {
     display: -webkit-flex;
     display: flex;
@@ -17,9 +17,9 @@
   }
   
   #logbox {
-    padding: 10px;
+    padding: 10px; 
     margin: 50px auto;
-    width: 340px;
+    width: 70%;
     background-color: #fff;
     -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
@@ -39,17 +39,19 @@
   
   .input {
     width: 75%;
-    height: 50px;
-    display: block;
+    height: 20px;
+    /* display:block; */
     margin: 0 auto 15px;
     padding: 0 15px;
     border: none;
     border-bottom: 2px solid #ebebeb;
   }
+
   .input:focus {
     outline: none;
     border-bottom-color: #3CC !important;
   }
+
   .input:hover {
     border-bottom-color: #dcdcdc;
   }
@@ -58,7 +60,7 @@
   }
   
   .pass:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px white inset;
+    box-shadow: 0 0 0 1000px white inset;
   }
   
   .inputButton {
@@ -91,4 +93,4 @@
   }
   .inputButton:focus {
     outline: none;
-  }
+  } 
